@@ -1,0 +1,104 @@
+{% extends 'base_ganks.html' %}
+{% load staticfiles %}
+
+{% block base_ganks %}
+    {% if check_Android %}
+        <h1>Android</h1>
+        <ul>
+            {% for x in Android %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_iOS %}
+        <h1>iOS</h1>
+        <ul>
+            {% for x in iOS %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_front %}
+        <h1>前端</h1>
+        <ul>
+            {% for x in front %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_App %}
+        <h1>App</h1>
+        <ul>
+            {% for x in App %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_xiatuijian %}
+        <h1>瞎推荐</h1>
+        <ul>
+            {% for x in xiatuijian %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="container col-md-8"></div>
+    <div class="container col-md-4">
+        <nav>
+            <ul class="pagination">
+                <li><a href="{% url 'day_ganks' id=1 %}">&laquo;</a></li>
+                <li id="P1"><a href="{% url 'day_ganks' id=1 %}">1</a></li>
+                <li id="P2"><a href="{% url 'day_ganks' id=2 %}">2</a></li>
+                <li id="P3"><a href="{% url 'day_ganks' id=3 %}">3</a></li>
+                <li id="P4"><a href="{% url 'day_ganks' id=4 %}">4</a></li>
+                <li id="P5"><a href="{% url 'day_ganks' id=5 %}">5</a></li>
+                <li><a href="{% url 'day_ganks' id=5 %}">&raquo;</a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

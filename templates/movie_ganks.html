@@ -1,0 +1,54 @@
+{% extends 'base_ganks.html' %}
+{% load staticfiles %}
+
+{% block base_ganks %}
+    <form class="form-inline" role="form" action="{% url 'search_movie' %}" method="post" style="margin-bottom: 48px">
+        <div class="form-group" style="padding-right: 20px">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="form-group" style="padding-right: 20px">
+            <label for="year">Year:</label>
+            <input type="number" class="form-control" id="year" name="year" style="width: 100px">
+        </div>
+        <div class="form-group" style="padding-right: 20px">
+            <label for="plot">Plot:</label>
+            <select class="form-control" id="plot" name="plot" style="width: 100px">
+                <option>Short</option>
+                <option>Full</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px">Search</button>
+        <button type="submit" class="btn btn-info">Reset</button>
+    </form>
+
+    {% if find %}
+        {% for x in ganks %}
+            <div class="container col-md-4">
+                <img src="{{ x.poster }}">
+            </div>
+            <div class="container col-md-8">
+                <h2 style="margin-bottom: 20px"><strong>{{ x.title }}</strong></h2>
+                <div style="font-size: 18px">
+                    <p><strong>Year:</strong> {{ x.year }}</p>
+                    <p><strong>Released:</strong> {{ x.released }}</p>
+                    <p><strong>Runtime:</strong> {{ x.runtime }}</p>
+                    <p><strong>Genre:</strong> {{ x.genre }}</p>
+                    <p><strong>Director:</strong> {{ x.director }}</p>
+                    <p><strong>Writer:</strong> {{ x.writer }}</p>
+                    <p><strong>Actors:</strong> {{ x.actors }}</p>
+                    <p><strong>Language:</strong> {{ x.language }}</p>
+                    <p><strong>Country:</strong> {{ x.country }}</p>
+                    <p><strong>Awards:</strong> {{ x.awards }}</p>
+                    <p><strong>Metascore:</strong> {{ x.metascore }}</p>
+                    <p><strong>ImdbRating:</strong> {{ x.imdbRating }}</p>
+                </div>
+            </div>
+            <p style="font-size: 18px"><strong>Plot:</strong> {{ x.plot }}</p>
+        {% endfor %}
+    {% else %}
+        <h1>没有找到符合条件的电影...</h1>
+    {% endif %}
+
+{% endblock %}
+

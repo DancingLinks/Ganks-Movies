@@ -1,0 +1,101 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ganks&Movies</title>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.cxselect.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.cxselect.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/jquery-ui.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static "css/customstyle.css" %}" type="text/css"/>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top col-sm-12" role="navigation">
+        <div class="container col-md-2"></div>
+        <div class="container col-md-8">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 24px">Ganks&Movies</a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse" style="padding-left: 280px">
+                <ul class="nav navbar-nav">
+                    <li id="index">
+                        <a href="{% url 'index' %}">主页</a>
+                    </li>
+                    <li id="all_ganks">
+                        <a href="{% url 'day_ganks' id=1 %}">每日干货</a>
+                    </li>
+                    <li id="android_ganks">
+                        <a href="{% url 'android_ganks' id=1 %}">Android</a>
+                    </li>
+                    <li id="ios_ganks">
+                        <a href="{% url 'ios_ganks' id=1 %}">iOS</a>
+                    </li>
+                    <li id="front_ganks">
+                        <a href="{% url 'front_ganks' id=1 %}">前端</a>
+                    </li>
+                    <li id="app_ganks">
+                        <a href="{% url 'app_ganks' id=1 %}">App</a>
+                    </li>
+                    <li id="xiatuijian_ganks">
+                        <a href="{% url 'xiatuijian_ganks' id=1 %}">瞎推荐</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">
+                            联系我们
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="user">
+                    <li class="dropdown">
+                        <a href="{% url 'movie_ganks' %}" style="font-size:20px">搜电影</a>
+{#                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"#}
+{#                               aria-expanded="false">#}
+{#                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>#}
+{#                                Username <span class="caret"></span></a>#}
+{#                            <ul class="dropdown-menu">#}
+{#                                <li><a href="#">基础信息</a></li>#}
+{#                                <li class="divider"></li>#}
+{#                                <li><a href="#">修改信息</a></li>#}
+{#                                <li><a href="#">修改密码</a></li>#}
+{#                            </ul>#}
+                    </li>
+                </ul>
+            </div>
+        </div>
+</nav>
+
+<div class="main-content container">
+    {% block base_main %}
+    {% endblock %}
+</div>
+
+</body>
+<script>
+        list = document.location.href.split("/");
+        $('#P'+list[list.length - 1]).addClass("active");
+
+        function download(img, url) {
+            $.post(
+                    '..{% url 'download' %}',
+                    {'url': url},
+                    function (json_data) {
+                        img.src = json_data.url;
+                    }
+            )
+        }
+    </script>
+</html>

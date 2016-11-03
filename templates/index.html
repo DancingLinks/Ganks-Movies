@@ -1,0 +1,91 @@
+{% extends 'base_ganks.html' %}
+{% load staticfiles %}
+
+{% block base_ganks %}
+    {% if check_Android %}
+        <h1>Android</h1>
+        <ul>
+            {% for x in Android %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_iOS %}
+        <h1>iOS</h1>
+        <ul>
+            {% for x in iOS %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_front %}
+        <h1>前端</h1>
+        <ul>
+            {% for x in front %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_App %}
+        <h1>App</h1>
+        <ul>
+            {% for x in App %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if check_xiatuijian %}
+        <h1>瞎推荐</h1>
+        <ul>
+            {% for x in xiatuijian %}
+                <li>
+                    <div style="padding-top: 20px;padding-bottom: 20px">
+                        <div style="padding-bottom: 10px">
+                            <a href='{{ x.url }}' style="font-size: 24px;margin-bottom: 10px">{{ x.desc }}</a>
+                        </div>
+                        {% for img in x.images %}
+                            <img src='{{ img }}' onerror="download(this, '{{ img }}' + '?imageView2/0/w/320')">
+                        {% endfor %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+

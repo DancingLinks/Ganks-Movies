@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block base_main %}
+    <div class="row ">
+{#        <div class="container col-sm-8">#}
+        <div class="container">
+            <div>
+                <div class="panel-card">
+                        <div class="page-header">
+                            <h1> {{ title }} </h1>
+                        </div>
+                        <div>
+                            {% block base_ganks %}
+                            {% endblock %}
+                        </div>
+                </div>
+            </div>
+        </div>
+
+{#        <div class="container col-sm-4 sidebar">#}
+{#            <div>#}
+{##}
+{#                    <div class="panel-card">#}
+{#                        <p>您的资料尚未完成, 请完善您的<a href="/accounts/info/change_info">个人资料</a></p>#}
+{#                    </div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+    </div>
+{% endblock %}
+
